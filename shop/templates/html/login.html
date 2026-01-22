@@ -1,0 +1,54 @@
+{%extends 'html/main.html'%}
+{% load static%}
+{%block 'content'%}
+
+<div class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 90px;">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3 mt-lg-5">Login</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="{%url 'index'%}">Home</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Login</p>
+        </div>
+    </div>
+</div>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+
+
+
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <h2>Login</h2>
+
+        <div class="icon">
+            🔒
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            
+       
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger text-center shadow-sm" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+             
+            {{ form.email }}
+           
+            {{ form.password }}
+
+           
+            
+            
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
+{%endblock 'content'%}

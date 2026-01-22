@@ -1,0 +1,21 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+<main class="content">
+    <form method="post">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-header">
+                <h5>Delete Order</h5>
+            </div>
+            <div class="card-body">
+                <p>Are you sure you want to delete order <strong>#{{ order.ID }}</strong> for customer <strong>{{ order.customer_id }}</strong>?</p>
+               
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a href="{% url 'list_order' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </form>
+</main>
+{% endblock %}
+

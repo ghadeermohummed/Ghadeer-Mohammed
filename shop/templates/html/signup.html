@@ -1,0 +1,62 @@
+{%extends 'html/main.html'%}
+{% load static%}
+{%block 'content'%}
+
+<div class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 90px;">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3 mt-lg-5">Signup</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="{%url 'index'%}">Home</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Signup</p>
+        </div>
+    </div>
+</div>
+    
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+
+
+
+<div class="signup-wrapper">
+    <div class="signup-card">
+        <h2>Sign Up</h2>
+
+        <div class="icon">
+            🔒
+        </div>
+
+        <form method="post">
+            
+            {% csrf_token %}
+
+            {% if form.errors %}
+    <div style="color: red;">
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+        {{ form.non_field_errors }}
+    </div>
+{% endif %}
+
+             
+            {{ form.first_name }}
+           
+            {{ form.last_name }}
+            
+            {{ form.email }}
+            
+            {{ form.password }}
+
+            {{ form.confirmpass }}
+
+             
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
+
+
+
+{%endblock 'content'%}

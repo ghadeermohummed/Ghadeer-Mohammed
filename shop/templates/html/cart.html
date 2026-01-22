@@ -1,0 +1,105 @@
+{%extends 'html/main.html'%}
+{% load static%}
+{%block 'content'%}
+
+<div class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 90px;">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3 mt-lg-5">Cart</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="{%url 'index'%}">Home</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Cart</p>
+        </div>
+    </div>
+</div>
+
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+
+
+
+
+<div class="cart-wrapper">
+    <div class="cart-card">
+
+        <h2>🛒 Shopping Cart</h2>
+
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body">
+                <!-- المنتجات تنضاف هنا تلقائياً -->
+            </tbody>
+        </table>
+
+        <div class="cart-total">
+            <strong id="cart-total">Grand Total: 0$</strong>
+        </div>
+
+        <button class="checkout-btn">Checkout</button>
+
+    </div>
+</div>
+<script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // قراءة كل المنتجات من localStorage مرة واحدة
+    let cartBody = document.getElementById("cart-body");
+    let total = 0;
+    
+    // دالة عرض كل المنتجات في السلة
+    function renderCart() {
+        cartBody.innerHTML = '';
+        total = 0;
+    
+        if(cart.length === 0){
+            cartBody.innerHTML = `<tr>
+                <td colspan="5" style="text-align:center;">Cart is empty!🛒</td>
+            </tr>`;
+            document.getElementById("cart-total").innerText = "Grand Total: 0$";
+            return;
+        }
+    
+        cart.forEach((item, index) => {
+            let itemTotal = item.price * item.qty;
+            total += itemTotal;
+    
+            cartBody.innerHTML += `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.price}$</td>
+                    <td>
+                        <input type="number" min="1" value="${item.qty}"
+                            onchange="updateQty(${index}, this.value)" style="width:60px;">
+                    </td>
+                    <td>${itemTotal}$</td>
+                    <td><button onclick="removeItem(${index})">❌</button></td>
+                </tr>
+            `;
+        });
+    
+        document.getElementById("cart-total").innerText = "Grand Total:  " + total + "$";
+    }
+    
+    // تعديل الكمية يدويًا
+    function updateQty(index, value) {
+        cart[index].qty = parseInt(value);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart(); // إعادة عرض السلة بعد تعديل الكمية
+    }
+    
+    // حذف منتج من السلة
+    function removeItem(index){
+        cart.splice(index,1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart(); // إعادة عرض السلة بعد الحذف
+    }
+    
+    // عند فتح الصفحة
+    renderCart();
+    </script>
+      {%endblock 'content'%}

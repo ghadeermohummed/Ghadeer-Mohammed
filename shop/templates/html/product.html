@@ -1,0 +1,275 @@
+{%extends 'html/main.html'%}
+{% load static%}
+{%block 'content'%}
+
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-3 mt-lg-5">Product</h1>
+            <div class="d-inline-flex align-items-center text-white">
+                <p class="m-0"><a class="text-white" href="{%url 'index'%}">Home</a></p>
+                <i class="fa fa-circle px-3"></i>
+                <p class="m-0">Product</p>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Products Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="section-title position-relative text-center mb-5">Best Prices We Offer For Ice Cream Lovers</h1>
+                </div>
+            </div>
+            <div class="products-grid">
+                <div class="row">   
+           {% for a in product %}
+            
+                <div class="col-lg-3 col-md-6 mb-4 pb-2">
+                    <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
+                        <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                            <h4 class="font-weight-bold text-white mb-0">{{a.price}}</h4>
+                        </div>
+                        <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
+                            <img class="rounded-circle w-100 h-100" src="{{a.Image.url}}" style="object-fit: cover;">
+                        </div>
+                        <h5 class="font-weight-bold mb-4">{{a.name}}</h5>
+                        <a href="javascript:void(0)"
+                        class="add-to-cart-btn btn btn-sm btn-secondary"
+                        onclick="addToCart('{{a.ID}}', '{{a.name}}', '{{a.price}}')">
+                        Add to Cart
+                        </a>
+                        <div style="text-align:center; margin-top:20px;">
+                       <a href="/cart/" class="btn btn-primary btn-lg">🛒</a>
+                </div>
+                       
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="section-title position-relative text-center mb-5">Best Prices We Offer For Ice Cream Lovers</h1>
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 pb-2">
+                    <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
+                        <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                            <h4 class="font-weight-bold text-white mb-0">$99</h4>
+                        </div>
+                        <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
+                            <img class="rounded-circle w-100 h-100" src="{% static 'img/product-1.jpg'%}" style="object-fit: cover;">
+                        </div>
+                        <h5 class="font-weight-bold mb-4">Mixed Berry Vanilla</h5>
+                        <a href="javascript:void(0)"
+                        class="add-to-cart-btn btn btn-sm btn-secondary"
+                        onclick="addToCart('prod1', 'Mixed Berry Vanilla', 99)">
+                        Add to Cart
+                        </a>
+                        <div style="text-align:center; margin-top:20px;">
+                       <a href="/cart/" class="btn btn-primary btn-lg">🛒</a>
+                </div>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 pb-2">
+                    <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
+                        <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                            <h4 class="font-weight-bold text-white mb-0">$80</h4>
+                        </div>
+                        <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
+                            <img class="rounded-circle w-100 h-100" src="{% static 'img/product-2.jpg'%}" style="object-fit: cover;">
+                        </div>
+                        <h5 class="font-weight-bold mb-4">Chocolate Strawberry Cup</h5>
+                        <a href="javascript:void(0)"
+                        class="add-to-cart-btn btn btn-sm btn-secondary"
+                        onclick="addToCart('prod2', 'Chocolate Strawberry Cup', 80)">
+                        Add to Cart
+                        </a>
+                        <div style="text-align:center; margin-top:20px;">
+                       <a href="/cart/" class="btn btn-primary btn-lg">🛒</a>
+                    </div>
+                </div>  
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 pb-2">
+                    <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
+                        <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                            <h4 class="font-weight-bold text-white mb-0">$150</h4>
+                        </div>
+                        <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
+                            <img class="rounded-circle w-100 h-100" src="{% static 'img/product-3.jpg'%}" style="object-fit: cover;">
+                        </div>
+                        <h5 class="font-weight-bold mb-4">Classic Vanilla Cone</h5>
+                        <a href="javascript:void(0)"
+                        class="add-to-cart-btn btn btn-sm btn-secondary"
+                        onclick="addToCart('prod3', 'Classic Vanilla Cone', 150)">
+                        Add to Cart
+                        </a>
+                        <div style="text-align:center; margin-top:20px;">
+                       <a href="/cart/" class="btn btn-primary btn-lg">🛒</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 pb-2">
+                    <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
+                        <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                            <h4 class="font-weight-bold text-white mb-0">$130</h4>
+                        </div>
+                        <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
+                            <img class="rounded-circle w-100 h-100" src="{% static 'img/product-4.jpg'%}" style="object-fit: cover;">
+                        </div>
+                        <h5 class="font-weight-bold mb-4">Premium Berry Vanilla </h5>
+                        <a href="javascript:void(0)"
+                        class="add-to-cart-btn btn btn-sm btn-secondary"
+                        onclick="addToCart('prod4', 'Premium Berry Vanilla', 130)">
+                        Add to Cart
+                        </a>
+                        <div style="text-align:center; margin-top:20px;">
+                       <a href="/cart/" class="btn btn-primary btn-lg">🛒</a>
+                    </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 pb-2">
+                    <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
+                        <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                            <h4 class="font-weight-bold text-white mb-0">$120</h4>
+                        </div>
+                        <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
+                            <img class="rounded-circle w-100 h-100" src="{% static 'img/product-5.jpg'%}" style="object-fit: cover;">
+                        </div>
+                        <h5 class="font-weight-bold mb-4">Creamy Strawberry Vanilla</h5>
+                        <a href="javascript:void(0)"
+                        class="add-to-cart-btn btn btn-sm btn-secondary"
+                        onclick="addToCart('prod5', 'Creamy Strawberry Vanilla', 120)">
+                        Add to Cart
+                        </a>
+                        <div style="text-align:center; margin-top:20px;">
+                       <a href="/cart/" class="btn btn-primary btn-lg">🛒</a>
+                    </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 pb-2">
+                    <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
+                        <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                            <h4 class="font-weight-bold text-white mb-0">$110</h4>
+                        </div>
+                        <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
+                            <img class="rounded-circle w-100 h-100" src="{% static 'img/product-1.jpg'%}" style="object-fit: cover;">
+                        </div>
+                        <h5 class="font-weight-bold mb-4">Vanilla Mix Scoops</h5>
+                        <a href="javascript:void(0)"
+                        class="add-to-cart-btn btn btn-sm btn-secondary"
+                        onclick="addToCart('prod6', 'Vanilla Mix Scoops', 110)">
+                        Add to Cart
+                        </a>
+                        <div style="text-align:center; margin-top:20px;">
+                       <a href="/cart/" class="btn btn-primary btn-lg">🛒</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 pb-2">
+                    <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
+                        <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                            <h4 class="font-weight-bold text-white mb-0">$97</h4>
+                        </div>
+                        <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
+                            <img class="rounded-circle w-100 h-100" src="{% static 'img/product-2.jpg'%}" style="object-fit: cover;">
+                        </div>
+                        <h5 class="font-weight-bold mb-4">Chocolate Fudge Vanilla </h5>
+                        <a href="javascript:void(0)"
+                        class="add-to-cart-btn btn btn-sm btn-secondary"
+                        onclick="addToCart('prod7', 'Chocolate Fudge Vanilla',97 )">
+                        Add to Cart
+                        </a>
+                        <div style="text-align:center; margin-top:20px;">
+                       <a href="/cart/" class="btn btn-primary btn-lg">🛒</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 pb-2">
+                    <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
+                        <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                            <h4 class="font-weight-bold text-white mb-0">$95</h4>
+                        </div>
+                        <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
+                            <img class="rounded-circle w-100 h-100" src="{% static 'img/product-3.jpg'%}" style="object-fit: cover;">
+                        </div>
+                        <h5 class="font-weight-bold mb-4">Royal Vanilla Cone</h5>
+                        <a href="javascript:void(0)"
+                        class="add-to-cart-btn btn btn-sm btn-secondary"
+                        onclick="addToCart('prod8', 'Royal Vanilla Cone',95 )">
+                        Add to Cart
+                        </a>
+                        <div style="text-align:center; margin-top:20px;">
+                       <a href="/cart/" class="btn btn-primary btn-lg">🛒</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <a href="" class="btn btn-primary py-3 px-5">Load More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Products End -->
+    <script>
+        function addToCart(id, name, price) {
+            // اقرأ السلة الموجودة أو أنشئ مصفوفة جديدة
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let found = false;
+        
+            // تحقق إذا المنتج موجود مسبقًا لزيادة الكمية
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].id === id) {
+                    cart[i].qty += 1;
+                    found = true;
+                    break;
+                }
+            }
+        
+            // إذا المنتج جديد أضفه للسلة
+            if (!found) {
+                cart.push({ id, name, price, qty: 1 });
+            }
+        
+            // حفظ السلة في localStorage
+            localStorage.setItem("cart", JSON.stringify(cart));
+        
+            // رسالة نجاح قصيرة
+            showMessage(name + " Added to cart successfully!✅");
+        }
+        
+        // دالة عرض الرسالة المؤقتة
+        function showMessage(message) {
+            let msgDiv = document.createElement("div");
+            msgDiv.innerText = message;
+            msgDiv.style.position = "fixed";
+            msgDiv.style.top = "20px";
+            msgDiv.style.right = "20px";
+            msgDiv.style.padding = "10px 20px";
+            msgDiv.style.backgroundColor = "#28a745";
+            msgDiv.style.color = "white";
+            msgDiv.style.borderRadius = "5px";
+            msgDiv.style.boxShadow = "0 2px 6px rgba(0,0,0,0.3)";
+            msgDiv.style.zIndex = "9999";
+            msgDiv.style.fontWeight = "bold";
+        
+            document.body.appendChild(msgDiv);
+        
+            setTimeout(() => {
+                msgDiv.remove();
+            }, 2000); // الرسالة تظهر ثانيتين
+        }
+        </script>
+    {%endblock 'content'%}
