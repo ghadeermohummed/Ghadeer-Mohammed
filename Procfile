@@ -1,0 +1,1 @@
+web: gunicorn icecream_shop_project.wsgi
